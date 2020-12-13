@@ -19,7 +19,7 @@ public class SimpleGetObjectSample {
 
     private static String endpoint = "oss-cn-beijing.aliyuncs.com";
     private static String accessKeyId = "LTAI4GJ8cD8WkhVxFXy6ptNg";
-    private static String accessKeySecret = "********";
+    private static String accessKeySecret = "WDrkfMggrQBy7sUEEEfy9FhBgoo0wb";
     private static String bucketName = "gcl-bucket-0001";
 
     // 扫描的文件夹
@@ -73,6 +73,7 @@ public class SimpleGetObjectSample {
                 try {
                     if (flag[0] == 1) {
                         System.out.println("文件已存在 : " + file.getName());
+                        flag[0] = 0;
                     } else {
                         InputStream inputStream = new FileInputStream(file);
                         String fileName = bucketFlower + "/" + file.getName();
