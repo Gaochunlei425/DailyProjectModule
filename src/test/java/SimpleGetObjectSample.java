@@ -19,7 +19,7 @@ public class SimpleGetObjectSample {
 
     private static String endpoint = "oss-cn-beijing.aliyuncs.com";
     private static String accessKeyId = "LTAI4GJ8cD8WkhVxFXy6ptNg";
-    private static String accessKeySecret = "WDrkfMggrQBy7sUEEEfy9FhBgoo0wb";
+    private static String accessKeySecret = "******";
     private static String bucketName = "gcl-bucket-0001";
 
     // 扫描的文件夹
