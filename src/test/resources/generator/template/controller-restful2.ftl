@@ -1,13 +1,17 @@
-package ${basePackage}.controller;
+package ${route}.controller;
+
 import ${basePackage}.core.Result;
 import ${basePackage}.core.ResultGenerator;
-import ${basePackage}.model.${modelNameUpperCamel};
-import ${basePackage}.service.${modelNameUpperCamel}Service;
+import ${route}.entity.${modelNameUpperCamel};
+import ${route}.service.${modelNameUpperCamel}Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.*;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -62,6 +66,21 @@ public class ${modelNameUpperCamel}Controller {
         PageHelper.startPage(page, size);
         List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll();
         PageInfo pageInfo = new PageInfo(list);
+        return ResultGenerator.genSuccessResult(pageInfo);
+    }
+
+    @ApiOperation(value = "动态查询列表")
+    @ApiImplicitParams({@ApiImplicitParam(name = "page", value = "页码", required = false, dataType = "int"),
+                        @ApiImplicitParam(name = "size", value = "页面大小", required = false, dataType = "int")})
+    @PostMapping(value = "/listByExample",produces = "application/json")
+    public Result findListByExample( @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                        @RequestParam(value = "size", required = false, defaultValue = "10") int size,
+                        @RequestParam(value = "${modelNameLowerCamel}", required = false) ${modelNameUpperCamel} ${modelNameLowerCamel}) {
+        PageHelper.startPage(page, size);
+        Example example = new Example(${modelNameUpperCamel}.class);
+        // example.orderBy("createTime").desc();
+        List<${modelNameUpperCamel}> allByExample = ${modelNameLowerCamel}Service.findAllByExample(example);
+        PageInfo pageInfo = new PageInfo(allByExample);
         return ResultGenerator.genSuccessResult(pageInfo);
     }
 }

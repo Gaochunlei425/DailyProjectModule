@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.logic.mapper.UserTestMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.logic.entity.UserTest">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="password" jdbcType="INTEGER" property="password" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="salary" jdbcType="INTEGER" property="salary" />
+  </resultMap>
+</mapper>
